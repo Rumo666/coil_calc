@@ -1,0 +1,5 @@
+power = (volt*volt)/resist
+amp = pow / volt
+
+power = (3.5*3.5)/0.33  = 37.12
+amp = 37.12/3.5 = 10.61
