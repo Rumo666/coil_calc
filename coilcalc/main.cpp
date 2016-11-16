@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     w.show();/*
     Dialog d;
     d.show();*/
+   // MainWindow::ui->frame->hide();
 
 
 
