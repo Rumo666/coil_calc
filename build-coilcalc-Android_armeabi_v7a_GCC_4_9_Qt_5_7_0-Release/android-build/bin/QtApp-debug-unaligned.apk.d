@@ -1,0 +1,25 @@
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\bin\QtApp-debug-unaligned.apk : \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\bin\QtApp.ap_ \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\bin\classes.dex \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\QtAndroid-bundled.jar \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libcoilcalc.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libgnustl_shared.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_generic_libqevdevkeyboardplugin.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_generic_libqevdevmouseplugin.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_generic_libqevdevtabletplugin.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_generic_libqevdevtouchplugin.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqdds.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqgif.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqicns.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqico.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqjpeg.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqtga.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqtiff.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqwbmp.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_imageformats_libqwebp.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_platforms_android_libqtforandroid.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_platforms_libqminimal.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libplugins_platforms_libqoffscreen.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libQt5Core.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libQt5Gui.so \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\libs\armeabi-v7a\libQt5Widgets.so \

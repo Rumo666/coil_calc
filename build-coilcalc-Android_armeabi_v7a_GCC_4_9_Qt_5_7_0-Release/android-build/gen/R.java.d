@@ -1,0 +1,24 @@
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\gen\org\qtproject\example\coilcalc\R.java \
+ : D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\layout\splash.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values\libs.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-de\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-el\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-es\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-et\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-fa\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-fr\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-id\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-it\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-ja\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-ms\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-nb\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-nl\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-pl\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-pt-rBR\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-ro\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-rs\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-ru\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-zh-rCN\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\res\values-zh-rTW\strings.xml \
+D:\Qt\proj\coilcalc\build-coilcalc-Android_armeabi_v7a_GCC_4_9_Qt_5_7_0-Release\android-build\bin\AndroidManifest.xml \
