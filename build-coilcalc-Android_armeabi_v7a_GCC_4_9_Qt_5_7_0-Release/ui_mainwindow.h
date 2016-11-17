@@ -153,7 +153,7 @@ public:
 
         pushButton_2 = new QPushButton(formLayoutWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setEnabled(false);
+        pushButton_2->setEnabled(true);
         pushButton_2->setStyleSheet(QStringLiteral("color: rgb(0, 0, 0);"));
 
         formLayout->setWidget(7, QFormLayout::FieldRole, pushButton_2);
