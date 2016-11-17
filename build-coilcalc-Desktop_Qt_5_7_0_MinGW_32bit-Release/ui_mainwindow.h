@@ -37,6 +37,7 @@ public:
     QLabel *label_3;
     QLabel *label_5;
     QLabel *label_6;
+    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -48,7 +49,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(90, 320, 80, 21));
+        pushButton->setGeometry(QRect(90, 310, 80, 30));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(30, 73, 81, 16));
@@ -64,21 +65,24 @@ public:
         frame = new QFrame(centralWidget);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setEnabled(true);
-        frame->setGeometry(QRect(60, 160, 241, 131));
+        frame->setGeometry(QRect(10, 160, 271, 131));
         frame->setFrameShape(QFrame::NoFrame);
         frame->setFrameShadow(QFrame::Plain);
         label_4 = new QLabel(frame);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(20, 20, 47, 13));
+        label_4->setGeometry(QRect(20, 10, 60, 30));
         label_3 = new QLabel(frame);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(20, 50, 47, 13));
+        label_3->setGeometry(QRect(20, 50, 70, 40));
         label_5 = new QLabel(frame);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(101, 20, 47, 13));
+        label_5->setGeometry(QRect(101, 9, 111, 30));
         label_6 = new QLabel(frame);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(101, 44, 47, 20));
+        label_6->setGeometry(QRect(101, 54, 101, 30));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(190, 320, 80, 21));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -96,6 +100,7 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Ampere:", 0));
         label_5->setText(QApplication::translate("MainWindow", "0", 0));
         label_6->setText(QApplication::translate("MainWindow", "0", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
     } // retranslateUi
 
 };

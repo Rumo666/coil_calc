@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    dialog.cpp
+    dialog.cpp \
+    about.cpp
 
 HEADERS  += mainwindow.h \
-    dialog.h
+    dialog.h \
+    about.h
 
 FORMS    += mainwindow.ui \
-    dialog.ui
+    dialog.ui \
+    about.ui
 
 CONFIG += mobility
 MOBILITY = 
