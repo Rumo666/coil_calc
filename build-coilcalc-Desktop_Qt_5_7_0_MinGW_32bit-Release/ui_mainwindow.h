@@ -22,6 +22,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -30,6 +31,24 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout;
+    QLineEdit *lineEdit;
+    QLabel *label_2;
+    QLineEdit *lineEdit_2;
+    QLabel *label_3;
+    QLineEdit *lineEdit_3;
+    QLabel *label_4;
+    QLineEdit *lineEdit_4;
+    QLabel *label_5;
+    QLineEdit *lineEdit_5;
+    QLabel *label_6;
+    QLineEdit *lineEdit_6;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QLabel *label;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QGroupBox *groupBox;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
@@ -52,22 +71,6 @@ public:
     QRadioButton *radioButton_11;
     QRadioButton *radioButton_12;
     QRadioButton *radioButton_13;
-    QWidget *formLayoutWidget;
-    QFormLayout *formLayout;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit_5;
-    QLineEdit *lineEdit_6;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -80,12 +83,99 @@ public:
 "color: rgb(255, 255, 255);"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        groupBox = new QGroupBox(centralWidget);
+        formLayoutWidget = new QWidget(centralWidget);
+        formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(20, 200, 261, 201));
+        formLayout = new QFormLayout(formLayoutWidget);
+        formLayout->setSpacing(6);
+        formLayout->setContentsMargins(11, 11, 11, 11);
+        formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        lineEdit = new QLineEdit(formLayoutWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit);
+
+        label_2 = new QLabel(formLayoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_2);
+
+        lineEdit_2 = new QLineEdit(formLayoutWidget);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, lineEdit_2);
+
+        label_3 = new QLabel(formLayoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_3);
+
+        lineEdit_3 = new QLineEdit(formLayoutWidget);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit_3);
+
+        label_4 = new QLabel(formLayoutWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_4);
+
+        lineEdit_4 = new QLineEdit(formLayoutWidget);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+
+        formLayout->setWidget(4, QFormLayout::FieldRole, lineEdit_4);
+
+        label_5 = new QLabel(formLayoutWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        formLayout->setWidget(5, QFormLayout::LabelRole, label_5);
+
+        lineEdit_5 = new QLineEdit(formLayoutWidget);
+        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, lineEdit_5);
+
+        label_6 = new QLabel(formLayoutWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        formLayout->setWidget(6, QFormLayout::LabelRole, label_6);
+
+        lineEdit_6 = new QLineEdit(formLayoutWidget);
+        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
+
+        formLayout->setWidget(6, QFormLayout::FieldRole, lineEdit_6);
+
+        pushButton = new QPushButton(formLayoutWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setStyleSheet(QStringLiteral("color: rgb(0, 0, 0);"));
+
+        formLayout->setWidget(7, QFormLayout::LabelRole, pushButton);
+
+        pushButton_2 = new QPushButton(formLayoutWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setStyleSheet(QStringLiteral("color: rgb(0, 0, 0);"));
+
+        formLayout->setWidget(7, QFormLayout::FieldRole, pushButton_2);
+
+        label = new QLabel(formLayoutWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label);
+
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(20, 10, 301, 171));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        groupBox = new QGroupBox(verticalLayoutWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(10, 20, 261, 51));
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(0, 20, 261, 31));
+        horizontalLayoutWidget->setGeometry(QRect(0, 20, 301, 31));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -123,12 +213,14 @@ public:
 
         horizontalLayout->addWidget(radioButton_6);
 
-        groupBox_2 = new QGroupBox(centralWidget);
+
+        verticalLayout->addWidget(groupBox);
+
+        groupBox_2 = new QGroupBox(verticalLayoutWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 70, 261, 51));
         horizontalLayoutWidget_2 = new QWidget(groupBox_2);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(0, 20, 261, 31));
+        horizontalLayoutWidget_2->setGeometry(QRect(0, 20, 301, 31));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -136,32 +228,43 @@ public:
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         radioButton_7 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_7->setObjectName(QStringLiteral("radioButton_7"));
-        radioButton_7->setIconSize(QSize(1, 1));
+        radioButton_7->setLayoutDirection(Qt::LeftToRight);
+        radioButton_7->setStyleSheet(QLatin1String("selection-color: rgb(255, 0, 0);\n"
+"selection-background-color: rgb(255, 0, 0);"));
+        radioButton_7->setIconSize(QSize(10, 10));
 
         horizontalLayout_2->addWidget(radioButton_7);
 
         radioButton_8 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_8->setObjectName(QStringLiteral("radioButton_8"));
+        radioButton_8->setStyleSheet(QLatin1String("selection-color: rgb(255, 0, 0);\n"
+"selection-background-color: rgb(255, 0, 0);"));
         radioButton_8->setIconSize(QSize(1, 1));
 
         horizontalLayout_2->addWidget(radioButton_8);
 
         radioButton_9 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_9->setObjectName(QStringLiteral("radioButton_9"));
+        radioButton_9->setStyleSheet(QLatin1String("selection-color: rgb(255, 0, 0);\n"
+"selection-background-color: rgb(255, 0, 0);"));
 
         horizontalLayout_2->addWidget(radioButton_9);
 
         radioButton_10 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_10->setObjectName(QStringLiteral("radioButton_10"));
+        radioButton_10->setStyleSheet(QStringLiteral("selection-color: rgb(255, 0, 0);"));
 
         horizontalLayout_2->addWidget(radioButton_10);
 
-        groupBox_3 = new QGroupBox(centralWidget);
+
+        verticalLayout->addWidget(groupBox_2);
+
+        groupBox_3 = new QGroupBox(verticalLayoutWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(10, 120, 261, 51));
+        groupBox_3->setEnabled(true);
         horizontalLayoutWidget_3 = new QWidget(groupBox_3);
         horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(0, 20, 261, 31));
+        horizontalLayoutWidget_3->setGeometry(QRect(0, 20, 301, 31));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -184,83 +287,8 @@ public:
 
         horizontalLayout_3->addWidget(radioButton_13);
 
-        formLayoutWidget = new QWidget(centralWidget);
-        formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(10, 170, 261, 211));
-        formLayout = new QFormLayout(formLayoutWidget);
-        formLayout->setSpacing(6);
-        formLayout->setContentsMargins(11, 11, 11, 11);
-        formLayout->setObjectName(QStringLiteral("formLayout"));
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(formLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
-
-        label_2 = new QLabel(formLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
-
-        label_3 = new QLabel(formLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
-
-        label_4 = new QLabel(formLayoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_4);
-
-        label_5 = new QLabel(formLayoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        formLayout->setWidget(4, QFormLayout::LabelRole, label_5);
-
-        label_6 = new QLabel(formLayoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        formLayout->setWidget(5, QFormLayout::LabelRole, label_6);
-
-        lineEdit = new QLineEdit(formLayoutWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
-
-        lineEdit_2 = new QLineEdit(formLayoutWidget);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
-
-        lineEdit_3 = new QLineEdit(formLayoutWidget);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-
-        formLayout->setWidget(2, QFormLayout::FieldRole, lineEdit_3);
-
-        lineEdit_4 = new QLineEdit(formLayoutWidget);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
-
-        formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit_4);
-
-        lineEdit_5 = new QLineEdit(formLayoutWidget);
-        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
-
-        formLayout->setWidget(4, QFormLayout::FieldRole, lineEdit_5);
-
-        lineEdit_6 = new QLineEdit(formLayoutWidget);
-        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
-
-        formLayout->setWidget(5, QFormLayout::FieldRole, lineEdit_6);
-
-        pushButton = new QPushButton(formLayoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-
-        formLayout->setWidget(6, QFormLayout::LabelRole, pushButton);
-
-        pushButton_2 = new QPushButton(formLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-
-        formLayout->setWidget(6, QFormLayout::FieldRole, pushButton_2);
+        verticalLayout->addWidget(groupBox_3);
 
         MainWindow->setCentralWidget(centralWidget);
 
@@ -272,6 +300,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        label_2->setText(QApplication::translate("MainWindow", "\320\264\320\270\320\260\320\274\320\265\321\202\321\200 \320\262\320\270\321\202\320\272\320\260", 0));
+        label_3->setText(QApplication::translate("MainWindow", "\321\207\320\270\321\201\320\273\320\276 \320\262\320\270\321\202\320\272\320\276\320\262", 0));
+        label_4->setText(QApplication::translate("MainWindow", "\320\264\320\273\320\270\320\275\320\260 \320\275\320\276\320\266\320\265\320\272", 0));
+        label_5->setText(QApplication::translate("MainWindow", "\321\202\320\270\320\277 \320\277\321\200\320\276\320\262\320\276\320\264\320\260", 0));
+        label_6->setText(QApplication::translate("MainWindow", "\320\262\320\276\320\273\321\214\321\202", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Calc", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
+        label->setText(QApplication::translate("MainWindow", "\320\264\320\270\320\260\320\274\320\265\321\202\321\200 \320\277\321\200\320\276\320\262\320\276\320\264\320\260", 0));
         groupBox->setTitle(QApplication::translate("MainWindow", "\320\272\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \320\277\321\200\320\276\320\262\320\276\320\264\320\276\320\262", 0));
         radioButton_2->setText(QApplication::translate("MainWindow", "1", 0));
         radioButton->setText(QApplication::translate("MainWindow", "2", 0));
@@ -288,14 +324,6 @@ public:
         radioButton_11->setText(QApplication::translate("MainWindow", "normal", 0));
         radioButton_12->setText(QApplication::translate("MainWindow", "micro", 0));
         radioButton_13->setText(QApplication::translate("MainWindow", "clapton", 0));
-        label->setText(QApplication::translate("MainWindow", "\320\264\320\270\320\260\320\274\320\265\321\202\321\200 \320\277\321\200\320\276\320\262\320\276\320\264\320\260", 0));
-        label_2->setText(QApplication::translate("MainWindow", "\320\264\320\270\320\260\320\274\320\265\321\202\321\200 \320\262\320\270\321\202\320\272\320\260", 0));
-        label_3->setText(QApplication::translate("MainWindow", "\321\207\320\270\321\201\320\273\320\276 \320\262\320\270\321\202\320\272\320\276\320\262", 0));
-        label_4->setText(QApplication::translate("MainWindow", "\320\264\320\273\320\270\320\275\320\260 \320\275\320\276\320\266\320\265\320\272", 0));
-        label_5->setText(QApplication::translate("MainWindow", "\321\202\320\270\320\277 \320\277\321\200\320\276\320\262\320\276\320\264\320\260", 0));
-        label_6->setText(QApplication::translate("MainWindow", "\320\262\320\276\320\273\321\214\321\202", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Calc", 0));
-        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
     } // retranslateUi
 
 };
