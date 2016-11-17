@@ -59,11 +59,6 @@ void MainWindow::on_pushButton_2_clicked()
 //получить значение радиобатона
 
     //MainWindow::ui->label_7->setText(MainWindow::checkedRadioWiredCount());
-    MainWindow::ui->label->setText("Лев гей");
-    MainWindow::ui->label_2->setText("Лев гей");
-    MainWindow::ui->label_3->setText("Лев гей");
-    MainWindow::ui->label_4->setText("Лев гей");
-    MainWindow::ui->label_5->setText("Лев гей");
-    MainWindow::ui->label_6->setText("Лев гей");
+
 
 }
