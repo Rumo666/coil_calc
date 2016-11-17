@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    QString checkedRadio();
+    QString checkedRadioWiredCount();
 
 private slots:
     void on_pushButton_clicked();

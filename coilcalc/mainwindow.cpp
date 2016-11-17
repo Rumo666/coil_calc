@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    MainWindow::ui->frame->hide();
+    //MainWindow::ui->frame->hide();
     setWindowState(Qt::WindowMaximized);
 
 }
@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QString MainWindow::checkedRadio(){
+QString MainWindow::checkedRadioWiredCount(){
     QString numChecked = "-1";
     QVector<QRadioButton*> rButtonContainer;
     rButtonContainer.push_back(ui->radioButton);
@@ -39,7 +39,7 @@ QString MainWindow::checkedRadio(){
 void MainWindow::on_pushButton_clicked()
 {
 
-    QString volt = MainWindow::ui->lineEdit->text();
+    /*QString volt = MainWindow::ui->lineEdit->text();
     QString resist = MainWindow::ui->lineEdit_2->text();
 
     float power = (volt.toFloat() *volt.toFloat())/resist.toFloat();
@@ -47,7 +47,7 @@ void MainWindow::on_pushButton_clicked()
 
     MainWindow::ui->label_5->setText(QString::number(power));
     MainWindow::ui->label_6->setText(QString::number(ampere));
-    MainWindow::ui->frame->show();
+    MainWindow::ui->frame->show();*/
 
 }
 
@@ -58,5 +58,5 @@ void MainWindow::on_pushButton_2_clicked()
     aa.exec();*/
 //получить значение радиобатона
 
-    MainWindow::ui->label_7->setText(MainWindow::checkedRadio());
+    //MainWindow::ui->label_7->setText(MainWindow::checkedRadioWiredCount());
 }
