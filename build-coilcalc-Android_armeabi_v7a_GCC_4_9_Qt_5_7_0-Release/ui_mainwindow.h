@@ -50,6 +50,7 @@ public:
     QRadioButton *radioButton_4;
     QRadioButton *radioButton_5;
     QRadioButton *radioButton_6;
+    QLabel *label_7;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -67,16 +68,16 @@ public:
         pushButton->setGeometry(QRect(90, 310, 80, 30));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(19, 115, 81, 30));
+        label->setGeometry(QRect(299, 105, 81, 30));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(19, 159, 81, 20));
+        label_2->setGeometry(QRect(299, 149, 81, 20));
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(109, 120, 113, 21));
+        lineEdit->setGeometry(QRect(389, 110, 113, 21));
         lineEdit_2 = new QLineEdit(centralWidget);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(110, 160, 113, 21));
+        lineEdit_2->setGeometry(QRect(390, 150, 113, 21));
         frame = new QFrame(centralWidget);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setEnabled(true);
@@ -111,11 +112,13 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         radioButton_2 = new QRadioButton(horizontalLayoutWidget);
         radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setIconSize(QSize(1, 1));
 
         horizontalLayout->addWidget(radioButton_2);
 
         radioButton = new QRadioButton(horizontalLayoutWidget);
         radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setIconSize(QSize(1, 1));
 
         horizontalLayout->addWidget(radioButton);
 
@@ -139,6 +142,9 @@ public:
 
         horizontalLayout->addWidget(radioButton_6);
 
+        label_7 = new QLabel(centralWidget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(20, 120, 47, 13));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -164,6 +170,7 @@ public:
         radioButton_4->setText(QApplication::translate("MainWindow", "4", 0));
         radioButton_5->setText(QApplication::translate("MainWindow", "5", 0));
         radioButton_6->setText(QApplication::translate("MainWindow", "6", 0));
+        label_7->setText(QApplication::translate("MainWindow", "TextLabel", 0));
     } // retranslateUi
 
 };

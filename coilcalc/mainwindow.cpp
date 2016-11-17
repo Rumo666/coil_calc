@@ -9,11 +9,31 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     MainWindow::ui->frame->hide();
     setWindowState(Qt::WindowMaximized);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+QString MainWindow::checkedRadio(){
+    QString numChecked = "-1";
+    QVector<QRadioButton*> rButtonContainer;
+    rButtonContainer.push_back(ui->radioButton);
+    rButtonContainer.push_back(ui->radioButton_2);
+    rButtonContainer.push_back(ui->radioButton_3);
+    rButtonContainer.push_back(ui->radioButton_4);
+    rButtonContainer.push_back(ui->radioButton_5);
+    rButtonContainer.push_back(ui->radioButton_6);
+
+    QString str;
+    for(int i = 0; i < rButtonContainer.size(); ++i){
+       if(rButtonContainer[i]->isChecked()){
+            numChecked = rButtonContainer[i]->text();
+       }
+    }
+    return numChecked;
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -34,14 +54,9 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
 
-    //about *aa = new about;
-    //aa->show();
+    /*about aa(this);
+    aa.exec();*/
+//получить значение радиобатона
 
-    /*
-    AddDialog ad(this);
-    ad.exec();
-    */
-    about aa(this);
-    aa.exec();
-
+    MainWindow::ui->label_7->setText(MainWindow::checkedRadio());
 }
