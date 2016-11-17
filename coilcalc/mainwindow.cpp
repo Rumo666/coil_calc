@@ -7,7 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    MainWindow::ui->frame->hide();      
+    MainWindow::ui->frame->hide();
+    setWindowState(Qt::WindowMaximized);
 }
 
 MainWindow::~MainWindow()

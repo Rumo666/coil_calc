@@ -17,34 +17,57 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_about
 {
 public:
-    QCheckBox *checkBox;
-    QCheckBox *checkBox_2;
     QLabel *label;
     QLabel *label_2;
+    QPushButton *pushButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QCheckBox *checkBox_2;
+    QCheckBox *checkBox;
 
     void setupUi(QDialog *about)
     {
         if (about->objectName().isEmpty())
             about->setObjectName(QStringLiteral("about"));
         about->resize(400, 300);
-        checkBox = new QCheckBox(about);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(50, 80, 72, 19));
-        checkBox_2 = new QCheckBox(about);
-        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-        checkBox_2->setGeometry(QRect(140, 80, 72, 19));
+        about->setAutoFillBackground(false);
+        about->setStyleSheet(QLatin1String("background-color: rgb(62, 62, 62);\n"
+"color: rgb(255, 255, 255);"));
+        about->setSizeGripEnabled(false);
         label = new QLabel(about);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(70, 150, 47, 13));
         label_2 = new QLabel(about);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(190, 150, 47, 13));
+        pushButton = new QPushButton(about);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(120, 220, 80, 21));
+        verticalLayoutWidget = new QWidget(about);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(60, 20, 221, 111));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        checkBox_2 = new QCheckBox(verticalLayoutWidget);
+        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
+
+        verticalLayout->addWidget(checkBox_2);
+
+        checkBox = new QCheckBox(verticalLayoutWidget);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+
+        verticalLayout->addWidget(checkBox);
+
 
         retranslateUi(about);
 
@@ -54,10 +77,11 @@ public:
     void retranslateUi(QDialog *about)
     {
         about->setWindowTitle(QApplication::translate("about", "Dialog", 0));
-        checkBox->setText(QApplication::translate("about", "CheckBox", 0));
-        checkBox_2->setText(QApplication::translate("about", "CheckBox", 0));
         label->setText(QApplication::translate("about", "TextLabel", 0));
         label_2->setText(QApplication::translate("about", "TextLabel", 0));
+        pushButton->setText(QApplication::translate("about", "PushButton", 0));
+        checkBox_2->setText(QApplication::translate("about", "CheckBox", 0));
+        checkBox->setText(QApplication::translate("about", "CheckBox", 0));
     } // retranslateUi
 
 };
