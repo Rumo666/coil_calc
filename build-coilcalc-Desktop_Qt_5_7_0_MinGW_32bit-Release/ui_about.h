@@ -16,6 +16,8 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -24,6 +26,9 @@ class Ui_about
 public:
     QCheckBox *checkBox;
     QCheckBox *checkBox_2;
+    QLabel *label;
+    QLabel *label_2;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *about)
     {
@@ -36,6 +41,15 @@ public:
         checkBox_2 = new QCheckBox(about);
         checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
         checkBox_2->setGeometry(QRect(140, 80, 72, 19));
+        label = new QLabel(about);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(70, 150, 47, 13));
+        label_2 = new QLabel(about);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(190, 150, 47, 13));
+        pushButton = new QPushButton(about);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(120, 220, 80, 21));
 
         retranslateUi(about);
 
@@ -47,6 +61,9 @@ public:
         about->setWindowTitle(QApplication::translate("about", "Dialog", 0));
         checkBox->setText(QApplication::translate("about", "CheckBox", 0));
         checkBox_2->setText(QApplication::translate("about", "CheckBox", 0));
+        label->setText(QApplication::translate("about", "TextLabel", 0));
+        label_2->setText(QApplication::translate("about", "TextLabel", 0));
+        pushButton->setText(QApplication::translate("about", "PushButton", 0));
     } // retranslateUi
 
 };

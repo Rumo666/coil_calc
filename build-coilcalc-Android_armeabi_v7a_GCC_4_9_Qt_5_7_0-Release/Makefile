@@ -50,17 +50,23 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ..\coilcalc\main.cpp \
 		..\coilcalc\mainwindow.cpp \
-		..\coilcalc\dialog.cpp moc_mainwindow.cpp \
-		moc_dialog.cpp
+		..\coilcalc\dialog.cpp \
+		..\coilcalc\about.cpp moc_mainwindow.cpp \
+		moc_dialog.cpp \
+		moc_about.cpp
 OBJECTS       = main.obj \
 		mainwindow.obj \
 		dialog.obj \
+		about.obj \
 		moc_mainwindow.obj \
-		moc_dialog.obj
+		moc_dialog.obj \
+		moc_about.obj
 DIST          =  ..\coilcalc\mainwindow.h \
-		..\coilcalc\dialog.h ..\coilcalc\main.cpp \
+		..\coilcalc\dialog.h \
+		..\coilcalc\about.h ..\coilcalc\main.cpp \
 		..\coilcalc\mainwindow.cpp \
-		..\coilcalc\dialog.cpp
+		..\coilcalc\dialog.cpp \
+		..\coilcalc\about.cpp
 QMAKE_TARGET  = libcoilcalc.so
 DESTDIR       = 
 TARGET        = libcoilcalc.so
@@ -69,7 +75,7 @@ TARGET        = libcoilcalc.so
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_dialog.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_dialog.h ui_about.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ..\coilcalc\coilcalc.pro ..\..\..\Qt5.7.0\5.7\android_armv7\mkspecs\android-g++\qmake.conf ..\..\..\Qt5.7.0\5.7\android_armv7\mkspecs\features\spec_pre.prf \
@@ -371,9 +377,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@if not exist $(DISTDIR) mkdir $(DISTDIR) & if not exist $(DISTDIR) exit 1
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)\
-	$(COPY_FILE) --parents ..\coilcalc\mainwindow.h ..\coilcalc\dialog.h $(DISTDIR)\
-	$(COPY_FILE) --parents ..\coilcalc\main.cpp ..\coilcalc\mainwindow.cpp ..\coilcalc\dialog.cpp $(DISTDIR)\
-	$(COPY_FILE) --parents ..\coilcalc\mainwindow.ui ..\coilcalc\dialog.ui $(DISTDIR)\
+	$(COPY_FILE) --parents ..\coilcalc\mainwindow.h ..\coilcalc\dialog.h ..\coilcalc\about.h $(DISTDIR)\
+	$(COPY_FILE) --parents ..\coilcalc\main.cpp ..\coilcalc\mainwindow.cpp ..\coilcalc\dialog.cpp ..\coilcalc\about.cpp $(DISTDIR)\
+	$(COPY_FILE) --parents ..\coilcalc\mainwindow.ui ..\coilcalc\dialog.ui ..\coilcalc\about.ui $(DISTDIR)\
 
 
 clean: compiler_clean 
@@ -398,9 +404,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog.cpp moc_about.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog.cpp moc_about.cpp
 moc_mainwindow.cpp: ..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QMainWindow \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qmainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qwidget.h \
@@ -805,6 +811,9 @@ moc_mainwindow.cpp: ..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QMainWi
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtouchdevice.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabwidget.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qicon.h \
+		..\coilcalc\about.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdialog.h \
 		..\coilcalc\mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\bin\moc.exe
 	D:\Qt\Qt5.7.0\5.7\android_armv7\bin\moc.exe $(DEFINES) -ID:/Qt/Qt5.7.0/5.7/android_armv7/mkspecs/android-g++ -ID:/Qt/proj/coilcalc/coilcalc -ID:/Qt/Qt5.7.0/5.7/android_armv7/include -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtWidgets -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtGui -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtCore -I. -ID:\DEV\ANDROID\android-ndk-r13b/sources/cxx-stl/gnu-libstdc++/4.9/include -ID:\DEV\ANDROID\android-ndk-r13b/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -ID:\DEV\ANDROID\android-ndk-r13b/platforms/android-16/arch-arm//usr/include ..\coilcalc\mainwindow.h -o moc_mainwindow.cpp
@@ -1215,11 +1224,417 @@ moc_dialog.cpp: ..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
 		..\..\..\Qt5.7.0\5.7\android_armv7\bin\moc.exe
 	D:\Qt\Qt5.7.0\5.7\android_armv7\bin\moc.exe $(DEFINES) -ID:/Qt/Qt5.7.0/5.7/android_armv7/mkspecs/android-g++ -ID:/Qt/proj/coilcalc/coilcalc -ID:/Qt/Qt5.7.0/5.7/android_armv7/include -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtWidgets -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtGui -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtCore -I. -ID:\DEV\ANDROID\android-ndk-r13b/sources/cxx-stl/gnu-libstdc++/4.9/include -ID:\DEV\ANDROID\android-ndk-r13b/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -ID:\DEV\ANDROID\android-ndk-r13b/platforms/android-16/arch-arm//usr/include ..\coilcalc\dialog.h -o moc_dialog.cpp
 
+moc_about.cpp: ..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdialog.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qwidget.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qglobal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstddef \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++config.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\os_defines.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\cpu_defines.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qconfig.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfeatures.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcompilerdetection.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\utility \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_relops.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_pair.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\move.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\concept_check.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\boost_concept_check.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_iterator_base_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\type_traits \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\c++0x_warning.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstdint \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\stdint.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\_wchar_limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\android\api-level.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\initializer_list \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\algorithm \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_algobase.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\functexcept.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\exception_defines.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\cpp_type_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\type_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\numeric_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_iterator_base_funcs.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\debug.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\macros.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\functions.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_function.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\backward\binders.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\formatter.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\typeinfo \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\exception \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\atomic_lockfree_defines.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\exception_ptr.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\nested_exception.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\hash_bytes.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ptr_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\predefined_ops.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algobase.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\features.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\basic_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\parallel.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\compiletime_settings.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstdio \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\stdio.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\cdefs_elf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\posix_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\stddef.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\compiler.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\posix_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\kernel.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\sysmacros.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstdlib \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\stdlib.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\string.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\malloc.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\alloca.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\strings.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\memory.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\limits \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\cstdint \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\tags.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\settings.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algorithmfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\find.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\compatibility.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sched.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\time.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\time.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\equally_split.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\find_selectors.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_algo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\algorithmfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_heap.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_tempbuf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_construct.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\new \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\alloc_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\alloc_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\memoryfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\new_allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\random \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cmath \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\math.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\internal_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\syslimits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\page.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\string \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stringfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\char_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\postypes.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cwchar \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\wchar.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\time.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\siginfo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\siginfo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\localefwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++locale.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\clocale \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\locale.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\iosfwd \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cctype \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\ctype.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ostream_insert.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\cxxabi_forced.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\range_access.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_string.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\atomicity.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\gthr.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\gthr-default.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\pthread.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\signal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\signal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\signal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\sigcontext.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\ucontext.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\user.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\unistd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\select.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\sysconf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\capability.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\pathconf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\atomic_word.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\string_conversions.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cerrno \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\errno-base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\functional_hash.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_string.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\random.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\vector \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_uninitialized.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_vector.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_bvector.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\vector.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\vector \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_sequence.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\concurrence.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_sequence.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_iterator.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\vector \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\functional \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tuple \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\array \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\stdexcept \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\array \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\array \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\uses_allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_hash_func.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_node.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_trace.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\aligned_buffer.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\hashtable.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\hashtable_policy.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\unordered_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_unordered_container.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_unordered_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_unordered_container.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_local_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_local_iterator.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\unordered_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\type_traits \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\functional_hash.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\hashtable.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\hashtable_policy.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\unordered_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\fstream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\istream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ios \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ios_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_classes.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_classes.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\streambuf \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\streambuf.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_ios.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_facets.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cwctype \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\wctype.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\ctype_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\streambuf_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\ctype_inline.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_facets.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_ios.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ostream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ostream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\istream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\codecvt.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\basic_file.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++io.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\fstream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_algos.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_state.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_hashtable_size.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_container_size.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\sstream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\sstream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_map_to_unordered_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_vector_size.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_vector_to_list.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_list_to_slist.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_list_to_vector.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\iterator_tracker.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\opt_random.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\random.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\numeric \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_numeric.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\numeric \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\numericfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\for_each.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\par_loop.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\omp_loop.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\workstealing.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\random_number.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\random \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\cmath \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\gamma.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\special_function_util.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\bessel_function.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\beta_function.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\ell_integral.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\exp_integral.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\hypergeometric.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\legendre_function.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\modified_bessel_func.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\poly_hermite.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\poly_laguerre.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\riemann_zeta.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\random.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\random.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\for_each_selectors.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\partial_sum.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algorithm \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\sort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\checkers.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\multiway_mergesort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\multiway_merge.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\losertree.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\multiseq_selection.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\queue \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\deque \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_deque.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\deque.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\deque \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\deque \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_queue.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\quicksort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\partition.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\balanced_quicksort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\queue.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\omp_loop_static.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\search.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\random_shuffle.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\merge.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\unique_copy.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\set_operations.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qtypetraits.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qisenum.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsysinfo.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qlogging.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qflags.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic_cxx11.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\atomic \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\atomic_base.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmutex.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qnumeric.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qversiontagging.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qnamespace.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobject.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstring.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qchar.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qbytearray.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qrefcount.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qarraydata.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\iterator \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stream_iterator.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qlist.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qalgorithms.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qiterator.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qpair.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\list \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_list.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\list.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\list \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\list \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstringlist.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qregexp.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcoreevent.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmetatype.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcontainerfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_tree.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_multimap.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\multimap.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\multimap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobject_impl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmargins.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qrect.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsize.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qpoint.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpalette.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qcolor.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qrgb.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qrgba64.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qbrush.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qvector.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qmatrix.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpolygon.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qregion.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qdatastream.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qiodevice.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qline.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtransform.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpainterpath.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qimage.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpixelformat.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpixmap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qshareddata.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qhash.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qfont.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qfontinfo.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qcursor.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qkeysequence.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qevent.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qvariant.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qdebug.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qtextstream.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qlocale.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qset.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qurl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qurlquery.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfile.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfiledevice.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qvector2d.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtouchdevice.h \
+		..\coilcalc\about.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\bin\moc.exe
+	D:\Qt\Qt5.7.0\5.7\android_armv7\bin\moc.exe $(DEFINES) -ID:/Qt/Qt5.7.0/5.7/android_armv7/mkspecs/android-g++ -ID:/Qt/proj/coilcalc/coilcalc -ID:/Qt/Qt5.7.0/5.7/android_armv7/include -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtWidgets -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtGui -ID:/Qt/Qt5.7.0/5.7/android_armv7/include/QtCore -I. -ID:\DEV\ANDROID\android-ndk-r13b/sources/cxx-stl/gnu-libstdc++/4.9/include -ID:\DEV\ANDROID\android-ndk-r13b/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -ID:\DEV\ANDROID\android-ndk-r13b/platforms/android-16/arch-arm//usr/include ..\coilcalc\about.h -o moc_about.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_dialog.h
+compiler_uic_make_all: ui_mainwindow.h ui_dialog.h ui_about.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_dialog.h
+	-$(DEL_FILE) ui_mainwindow.h ui_dialog.h ui_about.h
 ui_mainwindow.h: ..\coilcalc\mainwindow.ui \
 		..\..\..\Qt5.7.0\5.7\android_armv7\bin\uic.exe
 	D:\Qt\Qt5.7.0\5.7\android_armv7\bin\uic.exe ..\coilcalc\mainwindow.ui -o ui_mainwindow.h
@@ -1227,6 +1642,10 @@ ui_mainwindow.h: ..\coilcalc\mainwindow.ui \
 ui_dialog.h: ..\coilcalc\dialog.ui \
 		..\..\..\Qt5.7.0\5.7\android_armv7\bin\uic.exe
 	D:\Qt\Qt5.7.0\5.7\android_armv7\bin\uic.exe ..\coilcalc\dialog.ui -o ui_dialog.h
+
+ui_about.h: ..\coilcalc\about.ui \
+		..\..\..\Qt5.7.0\5.7\android_armv7\bin\uic.exe
+	D:\Qt\Qt5.7.0\5.7\android_armv7\bin\uic.exe ..\coilcalc\about.ui -o ui_about.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1643,6 +2062,9 @@ main.obj: ..\coilcalc\main.cpp ../coilcalc/mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtouchdevice.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabwidget.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qicon.h \
+		../coilcalc/about.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdialog.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QApplication \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qapplication.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcoreapplication.h \
@@ -1650,9 +2072,7 @@ main.obj: ..\coilcalc\main.cpp ../coilcalc/mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdesktopwidget.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qguiapplication.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qinputmethod.h \
-		../coilcalc/dialog.h \
-		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
-		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdialog.h
+		../coilcalc/dialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.obj ..\coilcalc\main.cpp
 
 mainwindow.obj: ..\coilcalc\mainwindow.cpp ../coilcalc/mainwindow.h \
@@ -2060,6 +2480,9 @@ mainwindow.obj: ..\coilcalc\mainwindow.cpp ../coilcalc/mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtouchdevice.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabwidget.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qicon.h \
+		../coilcalc/about.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdialog.h \
 		ui_mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\QVariant \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QAction \
@@ -2074,11 +2497,12 @@ mainwindow.obj: ..\coilcalc\mainwindow.cpp ../coilcalc/mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qinputmethod.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QButtonGroup \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qbuttongroup.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QFrame \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qframe.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QHeaderView \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qheaderview.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractitemview.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractscrollarea.h \
-		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qframe.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qabstractitemmodel.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qitemselectionmodel.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractitemdelegate.h \
@@ -2091,6 +2515,14 @@ mainwindow.obj: ..\coilcalc\mainwindow.cpp ../coilcalc/mainwindow.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qstyle.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabbar.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QLabel \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qlabel.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QLineEdit \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qlineedit.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtextcursor.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtextformat.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpen.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtextoption.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QPushButton \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qpushbutton.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractbutton.h \
@@ -2500,14 +2932,465 @@ dialog.obj: ..\coilcalc\dialog.cpp ../coilcalc/dialog.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfiledevice.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qvector2d.h \
 		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtouchdevice.h \
-		ui_dialog.h
+		ui_dialog.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\QVariant \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QAction \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qaction.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qicon.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qactiongroup.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QApplication \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qapplication.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qeventloop.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qguiapplication.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qinputmethod.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QButtonGroup \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qbuttongroup.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QHeaderView \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qheaderview.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractitemview.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qframe.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qitemselectionmodel.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qvalidator.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qregularexpression.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qslider.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qstyle.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QLabel \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qlabel.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QPushButton \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qpushbutton.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog.obj ..\coilcalc\dialog.cpp
+
+about.obj: ..\coilcalc\about.cpp ../coilcalc/about.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qdialog.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qwidget.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qglobal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstddef \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++config.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\os_defines.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\cpu_defines.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qconfig.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfeatures.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcompilerdetection.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\utility \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_relops.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_pair.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\move.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\concept_check.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\boost_concept_check.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_iterator_base_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\type_traits \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\c++0x_warning.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstdint \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\stdint.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\_wchar_limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\android\api-level.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\initializer_list \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\algorithm \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_algobase.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\functexcept.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\exception_defines.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\cpp_type_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\type_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\numeric_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_iterator_base_funcs.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\debug.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\macros.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\functions.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_function.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\backward\binders.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\formatter.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\typeinfo \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\exception \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\atomic_lockfree_defines.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\exception_ptr.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\nested_exception.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\hash_bytes.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ptr_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\predefined_ops.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algobase.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\features.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\basic_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\parallel.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\compiletime_settings.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstdio \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\stdio.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\cdefs.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\cdefs_elf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\posix_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\stddef.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\compiler.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\posix_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\kernel.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\sysmacros.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cstdlib \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\stdlib.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\string.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\malloc.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\alloca.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\strings.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\memory.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\limits \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\cstdint \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\tags.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\settings.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algorithmfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\find.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\compatibility.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sched.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\time.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\time.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\equally_split.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\find_selectors.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_algo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\algorithmfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_heap.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_tempbuf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_construct.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\new \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\alloc_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\alloc_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\memoryfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\new_allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\random \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cmath \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\math.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\internal_types.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\machine\limits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\syslimits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\page.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\string \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stringfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\char_traits.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\postypes.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cwchar \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\wchar.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\time.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\siginfo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\siginfo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\localefwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++locale.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\clocale \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\locale.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\iosfwd \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cctype \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\ctype.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ostream_insert.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\cxxabi_forced.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\range_access.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_string.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\atomicity.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\gthr.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\gthr-default.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\pthread.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\signal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\signal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\signal.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\sigcontext.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\ucontext.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\user.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\unistd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\select.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\sys\sysconf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\capability.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\pathconf.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\atomic_word.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\string_conversions.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cerrno \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\linux\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\errno.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\asm-generic\errno-base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\functional_hash.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_string.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\random.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\vector \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_uninitialized.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_vector.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_bvector.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\vector.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\vector \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_sequence.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\concurrence.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_sequence.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_iterator.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\vector \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\functional \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tuple \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\array \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\stdexcept \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\array \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\array \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\uses_allocator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_hash_func.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_node.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_trace.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ext\aligned_buffer.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\hashtable.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\hashtable_policy.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\unordered_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_unordered_container.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_unordered_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_unordered_container.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_local_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\safe_local_iterator.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\unordered_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\unordered_map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\type_traits \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\functional_hash.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\hashtable.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\hashtable_policy.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\unordered_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\fstream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\istream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ios \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ios_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_classes.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_classes.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\streambuf \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\streambuf.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_ios.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_facets.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\cwctype \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\platforms\android-16\arch-arm\usr\include\wctype.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\ctype_base.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\streambuf_iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\ctype_inline.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\locale_facets.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\basic_ios.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\ostream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\ostream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\istream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\codecvt.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\basic_file.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\c++io.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\fstream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_algos.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_state.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_hashtable_size.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_container_size.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\sstream \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\sstream.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_map_to_unordered_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_vector_size.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_vector_to_list.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_list_to_slist.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\impl\profiler_list_to_vector.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\iterator_tracker.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi-v7a\include\bits\opt_random.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\random.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\numeric \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_numeric.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\numeric \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\numericfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\iterator.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\for_each.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\par_loop.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\omp_loop.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\workstealing.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\random_number.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\random \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\cmath \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\gamma.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\special_function_util.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\bessel_function.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\beta_function.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\ell_integral.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\exp_integral.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\hypergeometric.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\legendre_function.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\modified_bessel_func.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\poly_hermite.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\poly_laguerre.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\riemann_zeta.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\random.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\tr1\random.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\for_each_selectors.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\partial_sum.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algorithm \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\algo.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\sort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\checkers.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\multiway_mergesort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\multiway_merge.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\losertree.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\multiseq_selection.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\queue \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\deque \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_deque.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\deque.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\deque \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\deque \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_queue.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\quicksort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\partition.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\balanced_quicksort.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\queue.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\omp_loop_static.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\search.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\random_shuffle.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\merge.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\unique_copy.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\parallel\set_operations.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qtypetraits.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qisenum.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsysinfo.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qlogging.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qflags.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic_cxx11.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\atomic \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\atomic_base.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmutex.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qnumeric.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qversiontagging.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qnamespace.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobject.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstring.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qchar.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qbytearray.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qrefcount.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qarraydata.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\iterator \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stream_iterator.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qlist.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qalgorithms.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qiterator.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qpair.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\list \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_list.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\list.tcc \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\list \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\list \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstringlist.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qregexp.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcoreevent.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmetatype.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcontainerfwd.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_tree.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\bits\stl_multimap.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\debug\multimap.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\map \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\map.h \
+		..\..\..\..\DEV\ANDROID\android-ndk-r13b\sources\cxx-stl\gnu-libstdc++\4.9\include\profile\multimap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qobject_impl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmargins.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qrect.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsize.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qpoint.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpalette.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qcolor.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qrgb.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qrgba64.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qbrush.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qvector.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qmatrix.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpolygon.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qregion.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qdatastream.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qiodevice.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qline.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtransform.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpainterpath.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qimage.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpixelformat.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qpixmap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qshareddata.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qhash.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qfont.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qfontinfo.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qcursor.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qkeysequence.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qevent.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qvariant.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qmap.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qdebug.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qtextstream.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qlocale.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qset.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qurl.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qurlquery.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfile.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtCore\qfiledevice.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qvector2d.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qtouchdevice.h \
+		ui_about.h \
+		../coilcalc/mainwindow.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\QMainWindow \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qmainwindow.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt5.7.0\5.7\android_armv7\include\QtGui\qicon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o about.obj ..\coilcalc\about.cpp
 
 moc_mainwindow.obj: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.obj moc_mainwindow.cpp
 
 moc_dialog.obj: moc_dialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog.obj moc_dialog.cpp
+
+moc_about.obj: moc_about.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_about.obj moc_about.cpp
 
 ####### Install
 

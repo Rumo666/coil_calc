@@ -32,9 +32,15 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    /*AddDialog *ad = new AddDialog;
-    ad->show();*/
-    about *aa = new about;
-    aa->show();
+
+    //about *aa = new about;
+    //aa->show();
+
+    /*
+    AddDialog ad(this);
+    ad.exec();
+    */
+    about aa(this);
+    aa.exec();
 
 }

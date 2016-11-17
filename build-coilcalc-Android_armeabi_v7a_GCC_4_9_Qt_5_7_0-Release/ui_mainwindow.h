@@ -37,6 +37,7 @@ public:
     QLabel *label_3;
     QLabel *label_5;
     QLabel *label_6;
+    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -79,6 +80,9 @@ public:
         label_6 = new QLabel(frame);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(101, 54, 101, 30));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(190, 320, 80, 21));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -96,6 +100,7 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Ampere:", 0));
         label_5->setText(QApplication::translate("MainWindow", "0", 0));
         label_6->setText(QApplication::translate("MainWindow", "0", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
     } // retranslateUi
 
 };
