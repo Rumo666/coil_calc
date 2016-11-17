@@ -28,7 +28,7 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>200</y>
+      <y>220</y>
       <width>291</width>
       <height>224</height>
      </rect>
@@ -128,287 +128,302 @@ color: rgb(255, 255, 255);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>301</width>
-      <height>171</height>
+      <width>331</width>
+      <height>51</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-style: none;</string>
-       </property>
-       <property name="title">
-        <string>количество проводов</string>
-       </property>
-       <widget class="QWidget" name="horizontalLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>301</width>
-          <height>31</height>
-         </rect>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-style: none;
+ font-size: 13px;</string>
+    </property>
+    <property name="title">
+     <string>количество проводов</string>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>301</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QRadioButton" name="radioButton_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string notr="true">  1</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>1</width>
-             <height>1</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>  2</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>1</width>
-             <height>1</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_3">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>  3</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_4">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>  4</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_5">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>  5</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_6">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>  6</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox_2">
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-style: none;</string>
-       </property>
-       <property name="title">
-        <string>количество спиралей</string>
-       </property>
-       <widget class="QWidget" name="horizontalLayoutWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>201</width>
-          <height>31</height>
-         </rect>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QRadioButton" name="radioButton_7">
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>1</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>10</width>
-             <height>10</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_8">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>2</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>1</width>
-             <height>1</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_9">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_10">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <zorder>horizontalLayoutWidget_2</zorder>
-       <zorder>groupBox</zorder>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox_3">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>9</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-style: none;</string>
-       </property>
-       <property name="title">
-        <string>тип спирали</string>
-       </property>
-       <widget class="QWidget" name="horizontalLayoutWidget_3">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>301</width>
-          <height>31</height>
-         </rect>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QRadioButton" name="radioButton_11">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string> normal</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>1</width>
-             <height>1</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_12">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string> micro</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>1</width>
-             <height>1</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton_13">
-           <property name="styleSheet">
-            <string notr="true">text-align: right;</string>
-           </property>
-           <property name="text">
-            <string> clapton</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string notr="true">  1</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
        </widget>
-      </widget>
-     </item>
-    </layout>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>  2</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_3">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>  3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_4">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>  4</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_5">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>  5</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_6">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>  6</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>horizontalLayoutWidget</zorder>
+    <zorder>groupBox_2</zorder>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>299</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-style: none;
+ font-size: 13px;</string>
+    </property>
+    <property name="title">
+     <string>количество спиралей</string>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>201</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="radioButton_7">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>10</width>
+          <height>10</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_8">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>2</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_9">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_10">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>groupBox</zorder>
+    <zorder>label_7</zorder>
+    <zorder>horizontalLayoutWidget_2</zorder>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>140</y>
+      <width>321</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-style: none;
+ font-size: 13px;</string>
+    </property>
+    <property name="title">
+     <string>тип спирали</string>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>301</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QRadioButton" name="radioButton_11">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string> normal</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_12">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string> micro</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_13">
+        <property name="styleSheet">
+         <string notr="true">text-align: right;</string>
+        </property>
+        <property name="text">
+         <string> clapton</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
  </widget>

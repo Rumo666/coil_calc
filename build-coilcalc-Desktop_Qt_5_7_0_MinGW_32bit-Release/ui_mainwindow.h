@@ -85,12 +85,14 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         formLayoutWidget = new QWidget(centralWidget);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(20, 200, 261, 201));
+        formLayoutWidget->setGeometry(QRect(20, 200, 291, 224));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setSpacing(6);
         formLayout->setContentsMargins(11, 11, 11, 11);
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        formLayout->setContentsMargins(0, 0, 0, 0);
+        formLayout->setHorizontalSpacing(6);
+        formLayout->setVerticalSpacing(9);
+        formLayout->setContentsMargins(0, 0, 0, 7);
         lineEdit = new QLineEdit(formLayoutWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
@@ -154,6 +156,7 @@ public:
 
         pushButton_2 = new QPushButton(formLayoutWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setEnabled(false);
         pushButton_2->setStyleSheet(QStringLiteral("color: rgb(0, 0, 0);"));
 
         formLayout->setWidget(7, QFormLayout::FieldRole, pushButton_2);
@@ -165,14 +168,19 @@ public:
 
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(20, 10, 301, 171));
+        verticalLayoutWidget->setGeometry(QRect(20, 10, 301, 181));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
+        verticalLayout->setSpacing(0);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         groupBox = new QGroupBox(verticalLayoutWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
+        QFont font;
+        font.setPointSize(10);
+        groupBox->setFont(font);
+        groupBox->setContextMenuPolicy(Qt::DefaultContextMenu);
+        groupBox->setStyleSheet(QStringLiteral("border-style: none;"));
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(0, 20, 301, 31));
@@ -183,33 +191,47 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         radioButton_2 = new QRadioButton(horizontalLayoutWidget);
         radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(radioButton_2->sizePolicy().hasHeightForWidth());
+        radioButton_2->setSizePolicy(sizePolicy);
+        radioButton_2->setLayoutDirection(Qt::LeftToRight);
+        radioButton_2->setAutoFillBackground(false);
+        radioButton_2->setStyleSheet(QStringLiteral("text-align: right;"));
+        radioButton_2->setText(QStringLiteral("  1"));
         radioButton_2->setIconSize(QSize(1, 1));
 
         horizontalLayout->addWidget(radioButton_2);
 
         radioButton = new QRadioButton(horizontalLayoutWidget);
         radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setStyleSheet(QStringLiteral("text-align: right;"));
         radioButton->setIconSize(QSize(1, 1));
 
         horizontalLayout->addWidget(radioButton);
 
         radioButton_3 = new QRadioButton(horizontalLayoutWidget);
         radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioButton_3->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout->addWidget(radioButton_3);
 
         radioButton_4 = new QRadioButton(horizontalLayoutWidget);
         radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+        radioButton_4->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout->addWidget(radioButton_4);
 
         radioButton_5 = new QRadioButton(horizontalLayoutWidget);
         radioButton_5->setObjectName(QStringLiteral("radioButton_5"));
+        radioButton_5->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout->addWidget(radioButton_5);
 
         radioButton_6 = new QRadioButton(horizontalLayoutWidget);
         radioButton_6->setObjectName(QStringLiteral("radioButton_6"));
+        radioButton_6->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout->addWidget(radioButton_6);
 
@@ -218,50 +240,57 @@ public:
 
         groupBox_2 = new QGroupBox(verticalLayoutWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setKerning(true);
+        groupBox_2->setFont(font1);
+        groupBox_2->setStyleSheet(QStringLiteral("border-style: none;"));
         horizontalLayoutWidget_2 = new QWidget(groupBox_2);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(0, 20, 301, 31));
+        horizontalLayoutWidget_2->setGeometry(QRect(0, 20, 201, 31));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         radioButton_7 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_7->setObjectName(QStringLiteral("radioButton_7"));
         radioButton_7->setLayoutDirection(Qt::LeftToRight);
-        radioButton_7->setStyleSheet(QLatin1String("selection-color: rgb(255, 0, 0);\n"
-"selection-background-color: rgb(255, 0, 0);"));
+        radioButton_7->setStyleSheet(QStringLiteral("text-align: right;"));
         radioButton_7->setIconSize(QSize(10, 10));
 
         horizontalLayout_2->addWidget(radioButton_7);
 
         radioButton_8 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_8->setObjectName(QStringLiteral("radioButton_8"));
-        radioButton_8->setStyleSheet(QLatin1String("selection-color: rgb(255, 0, 0);\n"
-"selection-background-color: rgb(255, 0, 0);"));
+        radioButton_8->setStyleSheet(QStringLiteral("text-align: right;"));
         radioButton_8->setIconSize(QSize(1, 1));
 
         horizontalLayout_2->addWidget(radioButton_8);
 
         radioButton_9 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_9->setObjectName(QStringLiteral("radioButton_9"));
-        radioButton_9->setStyleSheet(QLatin1String("selection-color: rgb(255, 0, 0);\n"
-"selection-background-color: rgb(255, 0, 0);"));
+        radioButton_9->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout_2->addWidget(radioButton_9);
 
         radioButton_10 = new QRadioButton(horizontalLayoutWidget_2);
         radioButton_10->setObjectName(QStringLiteral("radioButton_10"));
-        radioButton_10->setStyleSheet(QStringLiteral("selection-color: rgb(255, 0, 0);"));
+        radioButton_10->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout_2->addWidget(radioButton_10);
 
+        horizontalLayoutWidget_2->raise();
+        groupBox->raise();
 
         verticalLayout->addWidget(groupBox_2);
 
         groupBox_3 = new QGroupBox(verticalLayoutWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setEnabled(true);
+        groupBox_3->setFont(font);
+        groupBox_3->setStyleSheet(QLatin1String("border-style: none;\n"
+""));
         horizontalLayoutWidget_3 = new QWidget(groupBox_3);
         horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
         horizontalLayoutWidget_3->setGeometry(QRect(0, 20, 301, 31));
@@ -272,18 +301,21 @@ public:
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         radioButton_11 = new QRadioButton(horizontalLayoutWidget_3);
         radioButton_11->setObjectName(QStringLiteral("radioButton_11"));
+        radioButton_11->setStyleSheet(QStringLiteral("text-align: right;"));
         radioButton_11->setIconSize(QSize(1, 1));
 
         horizontalLayout_3->addWidget(radioButton_11);
 
         radioButton_12 = new QRadioButton(horizontalLayoutWidget_3);
         radioButton_12->setObjectName(QStringLiteral("radioButton_12"));
+        radioButton_12->setStyleSheet(QStringLiteral("text-align: right;"));
         radioButton_12->setIconSize(QSize(1, 1));
 
         horizontalLayout_3->addWidget(radioButton_12);
 
         radioButton_13 = new QRadioButton(horizontalLayoutWidget_3);
         radioButton_13->setObjectName(QStringLiteral("radioButton_13"));
+        radioButton_13->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout_3->addWidget(radioButton_13);
 
@@ -309,21 +341,20 @@ public:
         pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
         label->setText(QApplication::translate("MainWindow", "\320\264\320\270\320\260\320\274\320\265\321\202\321\200 \320\277\321\200\320\276\320\262\320\276\320\264\320\260", 0));
         groupBox->setTitle(QApplication::translate("MainWindow", "\320\272\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \320\277\321\200\320\276\320\262\320\276\320\264\320\276\320\262", 0));
-        radioButton_2->setText(QApplication::translate("MainWindow", "1", 0));
-        radioButton->setText(QApplication::translate("MainWindow", "2", 0));
-        radioButton_3->setText(QApplication::translate("MainWindow", "3", 0));
-        radioButton_4->setText(QApplication::translate("MainWindow", "4", 0));
-        radioButton_5->setText(QApplication::translate("MainWindow", "5", 0));
-        radioButton_6->setText(QApplication::translate("MainWindow", "6", 0));
+        radioButton->setText(QApplication::translate("MainWindow", "  2", 0));
+        radioButton_3->setText(QApplication::translate("MainWindow", "  3", 0));
+        radioButton_4->setText(QApplication::translate("MainWindow", "  4", 0));
+        radioButton_5->setText(QApplication::translate("MainWindow", "  5", 0));
+        radioButton_6->setText(QApplication::translate("MainWindow", "  6", 0));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "\320\272\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \321\201\320\277\320\270\321\200\320\260\320\273\320\265\320\271", 0));
         radioButton_7->setText(QApplication::translate("MainWindow", "1", 0));
         radioButton_8->setText(QApplication::translate("MainWindow", "2", 0));
         radioButton_9->setText(QApplication::translate("MainWindow", "3", 0));
         radioButton_10->setText(QApplication::translate("MainWindow", "4", 0));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "\321\202\320\270\320\277 \321\201\320\277\320\270\321\200\320\260\320\273\320\270", 0));
-        radioButton_11->setText(QApplication::translate("MainWindow", "normal", 0));
-        radioButton_12->setText(QApplication::translate("MainWindow", "micro", 0));
-        radioButton_13->setText(QApplication::translate("MainWindow", "clapton", 0));
+        radioButton_11->setText(QApplication::translate("MainWindow", " normal", 0));
+        radioButton_12->setText(QApplication::translate("MainWindow", " micro", 0));
+        radioButton_13->setText(QApplication::translate("MainWindow", " clapton", 0));
     } // retranslateUi
 
 };

@@ -22,7 +22,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -47,8 +46,6 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QLabel *label;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
     QGroupBox *groupBox;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
@@ -85,7 +82,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         formLayoutWidget = new QWidget(centralWidget);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(20, 200, 291, 224));
+        formLayoutWidget->setGeometry(QRect(20, 220, 291, 224));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setSpacing(6);
         formLayout->setContentsMargins(11, 11, 11, 11);
@@ -166,18 +163,14 @@ public:
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label);
 
-        verticalLayoutWidget = new QWidget(centralWidget);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(20, 10, 301, 171));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        groupBox = new QGroupBox(verticalLayoutWidget);
+        groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(20, 10, 331, 51));
+        QFont font;
+        groupBox->setFont(font);
         groupBox->setContextMenuPolicy(Qt::DefaultContextMenu);
-        groupBox->setStyleSheet(QStringLiteral("border-style: none;"));
+        groupBox->setStyleSheet(QLatin1String("border-style: none;\n"
+" font-size: 13px;"));
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(0, 20, 301, 31));
@@ -232,17 +225,18 @@ public:
 
         horizontalLayout->addWidget(radioButton_6);
 
-
-        verticalLayout->addWidget(groupBox);
-
-        groupBox_2 = new QGroupBox(verticalLayoutWidget);
+        horizontalLayoutWidget->raise();
+        groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setStyleSheet(QStringLiteral("border-style: none;"));
+        groupBox_2->setGeometry(QRect(20, 70, 299, 61));
+        groupBox_2->setFont(font);
+        groupBox_2->setStyleSheet(QLatin1String("border-style: none;\n"
+" font-size: 13px;"));
         horizontalLayoutWidget_2 = new QWidget(groupBox_2);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(0, 20, 301, 31));
+        horizontalLayoutWidget_2->setGeometry(QRect(0, 30, 201, 31));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -273,18 +267,18 @@ public:
 
         horizontalLayout_2->addWidget(radioButton_10);
 
-        horizontalLayoutWidget_2->raise();
         groupBox->raise();
-
-        verticalLayout->addWidget(groupBox_2);
-
-        groupBox_3 = new QGroupBox(verticalLayoutWidget);
+        horizontalLayoutWidget_2->raise();
+        groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setEnabled(true);
-        groupBox_3->setStyleSheet(QStringLiteral("border-style: none;"));
+        groupBox_3->setGeometry(QRect(20, 140, 321, 71));
+        groupBox_3->setFont(font);
+        groupBox_3->setStyleSheet(QLatin1String("border-style: none;\n"
+" font-size: 13px;"));
         horizontalLayoutWidget_3 = new QWidget(groupBox_3);
         horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(0, 20, 301, 31));
+        horizontalLayoutWidget_3->setGeometry(QRect(0, 30, 301, 31));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -309,9 +303,6 @@ public:
         radioButton_13->setStyleSheet(QStringLiteral("text-align: right;"));
 
         horizontalLayout_3->addWidget(radioButton_13);
-
-
-        verticalLayout->addWidget(groupBox_3);
 
         MainWindow->setCentralWidget(centralWidget);
 
